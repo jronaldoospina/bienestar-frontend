@@ -36,8 +36,20 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (error) {
       let errorMsg = 'Credenciales inválidas';
-      if (error.response && error.response.data) errorMsg = error.response.data;
-      else if (error.message) errorMsg = error.message;
+      
+      if (error.response) {
+        const data = error.response.data;
+        if (typeof data === 'string') {
+          errorMsg = data;
+        } else if (data && typeof data === 'object') {
+          errorMsg = data.message || data.error || JSON.stringify(data);
+        }
+      } else if (error.request) {
+        errorMsg = 'No se pudo conectar con el servidor';
+      } else {
+        errorMsg = error.message || 'Error desconocido';
+      }
+      
       return { success: false, message: errorMsg };
     }
   };
