@@ -1,0 +1,16 @@
+{
+  "build": {
+    "command": "npm run build"
+  },
+  "headers": {
+    "/**": {
+      "X-Frame-Options": "DENY"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/*",
+      "destination": "/index.html"
+    }
+  ]
+}
