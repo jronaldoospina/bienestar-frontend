@@ -30,6 +30,7 @@ export const LoginPage = () => {
       const user = JSON.parse(localStorage.getItem('user'));
       
       // LOGS PARA DEPURACIÓN
+      console.log('API base URL:', api.defaults.baseURL);
       console.log('🔐 Usuario logueado:', user);
       console.log('📌 Rol del usuario:', user?.rol);
       console.log('➡️ Redirigiendo a:', 
