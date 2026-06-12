@@ -1,11 +1,14 @@
 import axios from 'axios';
 
+// Usar la variable de entorno o fallback a la URL del backend
+const API_URL = import.meta.env.VITE_API_URL || 'https://bienestar-backend-production.up.railway.app/api';
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: API_URL,
   headers: { 'Content-Type': 'application/json' }
 });
 
-// Request interceptor to ensure headers are always present
+// Interceptor para headers
 api.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   if (user.id) {
