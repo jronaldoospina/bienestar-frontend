@@ -16,17 +16,33 @@ export const LoginPage = () => {
     e.preventDefault();
     setError('');
     setLoading(true);
+    
     if (!email.endsWith('@unicesar.edu.co')) {
       setError('Debes usar tu correo institucional (@unicesar.edu.co)');
       setLoading(false);
       return;
     }
+    
     const result = await login(email, password);
+    
     if (result.success) {
-      navigate('/');
+      // Obtener el usuario del localStorage después del login exitoso
+      const user = JSON.parse(localStorage.getItem('user'));
+      
+      // Redirigir según el rol
+      if (user.rol === 'PSICOLOGO') {
+        navigate('/calendario');
+      } else if (user.rol === 'ESTUDIANTE') {
+        navigate('/mis-citas');
+      } else if (user.rol === 'ADMIN') {
+        navigate('/admin/usuarios');
+      } else {
+        navigate('/');
+      }
     } else {
       setError(result.message || 'Credenciales inválidas');
     }
+    
     setLoading(false);
   };
 
