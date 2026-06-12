@@ -29,6 +29,15 @@ export const LoginPage = () => {
       // Obtener el usuario del localStorage después del login exitoso
       const user = JSON.parse(localStorage.getItem('user'));
       
+      // LOGS PARA DEPURACIÓN
+      console.log('🔐 Usuario logueado:', user);
+      console.log('📌 Rol del usuario:', user?.rol);
+      console.log('➡️ Redirigiendo a:', 
+        user?.rol === 'PSICOLOGO' ? '/calendario' :
+        user?.rol === 'ESTUDIANTE' ? '/mis-citas' :
+        user?.rol === 'ADMIN' ? '/admin/usuarios' : '/'
+      );
+      
       // Redirigir según el rol
       if (user.rol === 'PSICOLOGO') {
         navigate('/calendario');
