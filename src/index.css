@@ -1,0 +1,203 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Paleta de colores personalizada (salud mental) */
+:root {
+  --primary-light: #e6f4ea;
+  --primary: #4c9f70;
+  --primary-dark: #3d8a5c;
+  --secondary: #7ab3c8;
+  --secondary-dark: #5d95b0;
+  --accent-lavender: #c5b9e2;
+  --danger: #e7a3a3;
+  --danger-dark: #d48c8c;
+  --text-dark: #2d3e3b;
+  --text-muted: #6b7b78;
+  --bg-light: #f4f8f6;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* ========== BOTONES MEJORADOS ========== */
+.btn {
+  @apply font-semibold py-2 px-4 rounded-xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-dark);
+}
+.btn-danger {
+  background-color: var(--danger);
+  color: white;
+}
+.btn-danger:hover {
+  background-color: var(--danger-dark);
+}
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  background-color: var(--primary-light);
+}
+
+/* ========== TARJETAS ========== */
+.card {
+  @apply bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* ========== ESTILOS PARA FULLCALENDAR ========== */
+.fc .fc-toolbar-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fc .fc-button-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+.fc .fc-button-primary:hover {
+  background-color: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+}
+.fc .fc-button-primary:focus {
+  box-shadow: none !important;
+}
+
+/* ========== MEJORAS TÁCTILES PARA MÓVILES ========== */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  input, select, textarea {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+}
+
+/* ========== PANEL LATERAL Y SCROLL ========== */
+@media (max-width: 640px) {
+  .fixed.right-0 {
+    width: 100% !important;
+  }
+}
+
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) #e2e8f0;
+}
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+}
+/* Estilos para eventos personalizados */
+.custom-event {
+  border-radius: 12px !important;
+  padding: 4px 8px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  transition: all 0.2s ease !important;
+}
+.custom-event:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  filter: brightness(0.98);
+}
+
+/* Ajustes globales del calendario */
+.fc-theme-standard .fc-scrollgrid,
+.fc-theme-standard td, 
+.fc-theme-standard th {
+  border-color: #e2e8f0 !important;
+}
+
+.fc .fc-timegrid-slot-label {
+  font-size: 0.75rem;
+  color: #6b7b78;
+}
+
+.fc .fc-col-header-cell-cushion {
+  font-weight: 600;
+  color: #2d3e3b;
+  padding: 8px 4px;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3e3b;
+}
+
+/* Sombra suave para el contenedor del calendario */
+.fc {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.sticky {
+  position: sticky;
+  top: 1rem;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
