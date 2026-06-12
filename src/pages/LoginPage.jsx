@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { LogIn, Mail, Lock, AlertCircle } from 'lucide-react';
 import logo from '../assets/logo.png';
+import api from '../services/api';  // Importación agregada
 
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +27,6 @@ export const LoginPage = () => {
     const result = await login(email, password);
     
     if (result.success) {
-      // Obtener el usuario del localStorage después del login exitoso
       const user = JSON.parse(localStorage.getItem('user'));
       
       // LOGS PARA DEPURACIÓN
